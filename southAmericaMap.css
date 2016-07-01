@@ -1,0 +1,95 @@
+Html, body, div, h1 {
+    Padding: 0;
+    Border: 0;
+    Margin: 0;
+}
+
+#Country_Names {
+    font-weight: lighter;
+}
+
+#South {
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #CC62A7;
+    padding: 12px 0px 0px 0px;
+    font-size: 37px;
+    font-weight: lighter;
+}
+
+#America {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #CC62A7;
+    position: absolute;
+    padding: 1px 0px 0px 328px;
+    margin-top: -10px;
+    font-size: 37px;
+    font-weight: lighter;
+}
+
+.Map {
+    margin: auto;
+    margin-top: 2px;
+    width: 640px;
+}
+
+/*Styling for the timeline*/
+
+#Timeline {
+    cursor: pointer;
+    margin: auto;
+    width: 680px;
+    margin-top: -1%;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #474747;
+    stroke-width: 2px;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13.5px;
+    fill: #474747;
+}
+
+/*Styling for the slider*/
+
+.slider {
+    fill: #CC62A7;
+}
+
+.text {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14.45px;
+    fill: #474747;
+}
+
+/*Sets all circles to enlarge and change color on hover or when timeline hits them*/
+
+.mousable {
+    r: 2.921;
+}
+
+.mousable:hover {
+    r: 4.9657;
+    fill: #CC62A7;
+}
+
+.highlighted {
+    r: 4.9657;
+    fill: #CC62A7;
+}
+
+/*Causes city name to show up on hover*/
+
+.Cities text {
+    visibility: hidden;
+}
+
+.mousable:hover ~ text {
+    visibility: visible;
+}
