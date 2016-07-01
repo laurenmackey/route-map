@@ -55,6 +55,7 @@ function brushstart () {
 
 function brushend () {
     clearInterval(intervalID);
+    sliderController.update();
 }
 
 function brushed () {
