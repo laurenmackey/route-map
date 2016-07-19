@@ -27,10 +27,48 @@ Html, body, div, h1 {
     font-weight: lighter;
 }
 
-.Map {
+#Central {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #CC62A7;
+    margin-left: 38%;
+    margin-top: 7.05%;
+    font-size: 37px;
+    font-weight: lighter;
+}
+
+#AmericaTwo {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #CC62A7;
+    margin-left: 42%;
+    margin-top: -.5%;
+    font-size: 37px;
+    font-weight: lighter;
+
+}
+
+.Map, .mapTwo {
     margin: auto;
     margin-top: 2px;
     width: 640px;
+}
+
+.mapTwo {
+    display: none;
+}
+
+#central-america-svg {
+    margin-left: 27%;
+    margin-top: -7%;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity .8s linear;
+}
+
+.fadeIn {
+    opacity: 1;
+    display: inline;
 }
 
 /*Styling for the timeline*/
@@ -92,4 +130,59 @@ Html, body, div, h1 {
 
 .mousable:hover ~ text {
     visibility: visible;
+}
+
+/* Arrow bounce */
+
+#Arrow {
+    cursor: pointer;
+}
+
+.bounce {
+  -webkit-animation: bounce 1s infinite;
+  animation: bounce infinite;
+  animation-duration: 2s;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+    40% {
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+    60% {
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+}
+
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+    40% {
+    transform: translateY(30px);
+  }
+    60% {
+    transform: translateY(15px);
+  }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+    40% {
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+    60% {
+    -ms-transform: translateY(15px);
+    transform: translateY(15px);
+  }
 }

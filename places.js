@@ -442,5 +442,30 @@ var PLACES = [
         "startDate": "2016-06-15",
         "endDate": "2016-06-18",
         "incomingLines": ["#line54"],
-    }   
+    },
+    // Panama
+    {
+        "name": "SanBlas",
+        "id": "#Panama_1",
+        "startDate": "2016-06-18",
+        "endDate": "2016-06-23",
+        "incomingLines": ["#line55"],
+        // "outgoingLine": "#line49",
+    },
+    {
+        "name": "Panama",
+        "id": "#Panama_2",
+        "startDate": "2016-06-23",
+        "endDate": "2016-06-27",
+        "incomingLines": ["#line56"],
+        // "outgoingLine": "#line49",
+    },
+    {
+        "name": "Boquete",
+        "id": "#Panama_3",
+        "startDate": "2016-06-27",
+        "endDate": "2016-07-05",
+        "incomingLines": ["#line57"],
+        // "outgoingLine": "#line49",
+    }    
 ]

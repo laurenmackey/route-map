@@ -8,7 +8,7 @@ var sliderController = (function(d3) {
 
     my.init = function () {
         // hides all city dots and names
-        cities = d3.selectAll('svg #Peru_Cities, #Bolivia_Cities, #Chile_Cities, #Argentina_Cities, #Uruguay_Cities, #Colombia_Cities')
+        cities = d3.selectAll('svg #Peru_Cities, #Bolivia_Cities, #Chile_Cities, #Argentina_Cities, #Uruguay_Cities, #Colombia_Cities, #Panama_Cities')
             .selectAll('g')
             .style('visibility', 'hidden');
 
@@ -142,28 +142,29 @@ var sliderController = (function(d3) {
         function highlightCountryForward () {
             bolivia = d3.selectAll('svg #Bolivia')
                 .selectAll('g')
-                .selectAll('path')
-                .style('fill', '#E0E0E0');
+                .selectAll('path');
 
             chile = d3.selectAll('svg #Chile')
                 .selectAll('g')
-                .selectAll('path')
-                .style('fill', '#E0E0E0');
+                .selectAll('path');
 
             argentina = d3.selectAll('svg #Argentina')
                 .selectAll('g')
-                .selectAll('path')
-                .style('fill', '#E0E0E0');
+                .selectAll('path');
 
             uruguay = d3.selectAll('svg #Uruguay')
                 .selectAll('g')
-                .selectAll('path')
-                .style('fill', '#E0E0E0');
+                .selectAll('path');
 
             colombia = d3.selectAll('svg #Colombia')
                 .selectAll('g')
-                .selectAll('path')
-                .style('fill', '#E0E0E0');
+                .selectAll('path');
+
+            centralGreen = d3.selectAll('svg #Central_America_green');
+
+            centralGray = d3.selectAll('svg #Central_America_gray');
+
+            arrow = d3.selectAll('svg #Arrow');
 
             if (placeIndex >= 10) {
                 bolivia.style('fill', '#CEF275');
@@ -183,6 +184,12 @@ var sliderController = (function(d3) {
 
             if (placeIndex >= 48) {
                 colombia.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 55) {
+                centralGreen.style('display', 'inline');
+                centralGray.style('display', 'none');
+                arrow.style('display', 'inline').classed('bounce', true);
             }
         }
 
@@ -210,6 +217,15 @@ var sliderController = (function(d3) {
                 .selectAll('path')
                 .style('fill', '#E0E0E0');
 
+            centralGreen = d3.selectAll('svg #Central_America_green')
+                .style('display', 'none');
+
+            centralGray = d3.selectAll('svg #Central_America_gray')
+                .style('display', 'inline');
+
+            arrow = d3.selectAll('svg #Arrow')
+                .style('display', 'none');
+
             if (placeIndex >= 8) {
                 bolivia.style('fill', '#CEF275');
             }
@@ -228,6 +244,12 @@ var sliderController = (function(d3) {
 
             if (placeIndex >= 46) {
                 colombia.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 53) {
+                centralGreen.style('display', 'inline');
+                centralGray.style('display', 'none');
+                arrow.style('display', 'inline').classed('bounce', true);
             }
         }
     
