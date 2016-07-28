@@ -58,6 +58,14 @@ function brushend () {
     sliderController.update();
 }
 
+southAmerica = d3.selectAll('.southAmericaMap');
+
+centralAmerica = d3.selectAll('.centralAmericaMap');
+
+var places = PLACES,
+    valuePixelsSouth = xScale(new Date(places[55].startDate));
+
+//southAmerica.style('display', 'block') === true && 
 function brushed () {
     var value = brush.extent()[0];
 
@@ -65,11 +73,19 @@ function brushed () {
     console.log('brushed', d3.event);
     if (d3.event.sourceEvent) {
         value = xScale.invert(d3.mouse(this)[0]);
+        if (d3.mouse(this)[0] > valuePixelsSouth) {
+            return;
+        }
         brush.extent([value, value]);
     }
 
+    if (d3.mouse(this)[0] > valuePixelsSouth) {
+        return;
+    }
+    
     handle.attr("transform", "translate(" + (xScale(value) - (handleSize / 2)) + ",0)");
     handle.select('text').text(sliderDateFormatter(value));
+    //}
 }
 
 
@@ -82,7 +98,7 @@ function main (event) {
     console.log("I am loaded completely", event);
     console.log("Let's see if d3 loaded", d3);
 
-    var svg = d3.select("#Timeline").append("svg")
+    var svg = d3.select("#timeline").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
 

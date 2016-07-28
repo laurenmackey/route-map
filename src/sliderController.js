@@ -164,7 +164,7 @@ var sliderController = (function(d3) {
 
             centralGray = d3.selectAll('svg #Central_America_gray');
 
-            arrow = d3.selectAll('svg #Arrow');
+            arrow = d3.selectAll('svg #southAmericaArrow');
 
             if (placeIndex >= 10) {
                 bolivia.style('fill', '#CEF275');
@@ -223,7 +223,7 @@ var sliderController = (function(d3) {
             centralGray = d3.selectAll('svg #Central_America_gray')
                 .style('display', 'inline');
 
-            arrow = d3.selectAll('svg #Arrow')
+            arrow = d3.selectAll('svg #southAmericaArrow')
                 .style('display', 'none');
 
             if (placeIndex >= 8) {

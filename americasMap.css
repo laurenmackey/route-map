@@ -8,7 +8,7 @@ Html, body, div, h1 {
     font-weight: lighter;
 }
 
-#South {
+#south {
     font-family: Helvetica, Arial, sans-serif;
     text-align: center;
     color: #CC62A7;
@@ -17,7 +17,7 @@ Html, body, div, h1 {
     font-weight: lighter;
 }
 
-#America {
+#america {
     font-family: Helvetica, Arial, sans-serif;
     color: #CC62A7;
     position: absolute;
@@ -27,7 +27,7 @@ Html, body, div, h1 {
     font-weight: lighter;
 }
 
-#Central {
+#central {
     font-family: Helvetica, Arial, sans-serif;
     color: #CC62A7;
     margin-left: 38%;
@@ -36,7 +36,7 @@ Html, body, div, h1 {
     font-weight: lighter;
 }
 
-#AmericaTwo {
+#americaTwo {
     font-family: Helvetica, Arial, sans-serif;
     color: #CC62A7;
     margin-left: 42%;
@@ -46,17 +46,17 @@ Html, body, div, h1 {
 
 }
 
-.Map, .mapTwo {
+.southAmericaMap, .centralAmericaMap {
     margin: auto;
     margin-top: 2px;
     width: 640px;
 }
 
-.mapTwo {
+.centralAmericaMap {
     display: none;
 }
 
-#central-america-svg {
+#centralAmericaSvg {
     margin-left: 27%;
     margin-top: -7%;
 }
@@ -73,7 +73,7 @@ Html, body, div, h1 {
 
 /*Styling for the timeline*/
 
-#Timeline {
+#timeline {
     cursor: pointer;
     margin: auto;
     width: 680px;
@@ -124,7 +124,7 @@ Html, body, div, h1 {
 
 /*Causes city name to show up on hover*/
 
-.Cities text {
+.cities text {
     visibility: hidden;
 }
 
@@ -134,7 +134,7 @@ Html, body, div, h1 {
 
 /* Arrow bounce */
 
-#Arrow {
+#southAmericaArrow, #centralAmericaArrow {
     cursor: pointer;
 }
 
