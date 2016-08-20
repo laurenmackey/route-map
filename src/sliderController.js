@@ -8,7 +8,7 @@ var sliderController = (function(d3) {
 
     my.init = function () {
         // hides all city dots and names
-        cities = d3.selectAll('svg #Peru_Cities, #Bolivia_Cities, #Chile_Cities, #Argentina_Cities, #Uruguay_Cities, #Colombia_Cities, #Panama_Cities')
+        cities = d3.selectAll('svg #Peru_Cities, #Bolivia_Cities, #Chile_Cities, #Argentina_Cities, #Uruguay_Cities, #Colombia_Cities, #Panama_Cities, #CostaRica_Cities, #Nicaragua_Cities, #Honduras_Cities, #Colombia_Cities_Central')
             .selectAll('g')
             .style('visibility', 'hidden');
 
@@ -160,6 +160,16 @@ var sliderController = (function(d3) {
                 .selectAll('g')
                 .selectAll('path');
 
+            costaRica = d3.selectAll('svg #Costa_Rica')
+                .selectAll('path')
+
+            nicaragua = d3.selectAll('svg #Nicaragua')
+                .selectAll('path')
+
+            honduras = d3.selectAll('svg #Honduras')
+                .selectAll('g')
+                .selectAll('path')
+
             centralGreen = d3.selectAll('svg #Central_America_green');
 
             centralGray = d3.selectAll('svg #Central_America_gray');
@@ -191,6 +201,18 @@ var sliderController = (function(d3) {
                 centralGray.style('display', 'none');
                 arrow.style('display', 'inline').classed('bounce', true);
             }
+
+            if (placeIndex >= 58) {
+                costaRica.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 64) {
+                nicaragua.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 69) {
+                honduras.style('fill', '#CEF275');
+            }
         }
 
         function highlightCountryBackward () {
@@ -213,6 +235,19 @@ var sliderController = (function(d3) {
                 .style('fill', '#E0E0E0');
 
             colombia = d3.selectAll('svg #Colombia')
+                .selectAll('g')
+                .selectAll('path')
+                .style('fill', '#E0E0E0');
+
+            costaRica = d3.selectAll('svg #Costa_Rica')
+                .selectAll('path')
+                .style('fill', '#E0E0E0');
+
+            nicaragua = d3.selectAll('svg #Nicaragua')
+                .selectAll('path')
+                .style('fill', '#E0E0E0');
+
+            honduras = d3.selectAll('svg #Honduras')
                 .selectAll('g')
                 .selectAll('path')
                 .style('fill', '#E0E0E0');
@@ -250,6 +285,18 @@ var sliderController = (function(d3) {
                 centralGreen.style('display', 'inline');
                 centralGray.style('display', 'none');
                 arrow.style('display', 'inline').classed('bounce', true);
+            }
+
+            if (placeIndex >= 56) {
+                costaRica.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 62) {
+                nicaragua.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 67) {
+                honduras.style('fill', '#CEF275');
             }
         }
     

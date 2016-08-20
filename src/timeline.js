@@ -62,10 +62,10 @@ southAmerica = d3.selectAll('.southAmericaMap');
 
 centralAmerica = d3.selectAll('.centralAmericaMap');
 
-var places = PLACES,
+/*var places = PLACES,
     valuePixelsSouth = xScale(new Date(places[55].startDate));
 
-//southAmerica.style('display', 'block') === true && 
+southAmerica.style('display', 'block') === true && */
 function brushed () {
     var value = brush.extent()[0];
 
@@ -73,19 +73,18 @@ function brushed () {
     console.log('brushed', d3.event);
     if (d3.event.sourceEvent) {
         value = xScale.invert(d3.mouse(this)[0]);
-        if (d3.mouse(this)[0] > valuePixelsSouth) {
+    /*    if (d3.mouse(this)[0] > valuePixelsSouth) {
             return;
-        }
+        } */
         brush.extent([value, value]);
     }
 
-    if (d3.mouse(this)[0] > valuePixelsSouth) {
+    /*if (d3.mouse(this)[0] > valuePixelsSouth) {
         return;
-    }
+    }*/
     
     handle.attr("transform", "translate(" + (xScale(value) - (handleSize / 2)) + ",0)");
     handle.select('text').text(sliderDateFormatter(value));
-    //}
 }
 
 
