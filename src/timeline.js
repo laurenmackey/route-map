@@ -1,15 +1,3 @@
-/* Source file for Interactive map */
-// also a valid comment
-
-// this file gets run when it's included into the html file
-// you can output to the console of a browser with the command console.log();
-// all statements in javascript need to end with ;
-// the file executes from top to bottom
-
-console.log("I am running");
-
-// Instantiate your d3 objects here
-
 // size parameters for SVG creation in main()
 var maxWidth = 680,
     maxHeight = 80,
@@ -19,10 +7,7 @@ var maxWidth = 680,
     startingDate = new Date("2015-08-30"),
     endingDate = new Date("2016-09-02"),
     // we create this here so we can use it in main and brushed
-    handle = null,
-    handleSize = 24,
 
-    // create a d3 scale
     xScale = d3.time.scale()
         .domain([startingDate, endingDate])
         .range([0, width])
@@ -30,7 +15,6 @@ var maxWidth = 680,
 
     dateFormatter = d3.time.format("%b'%y"),
     sliderDateFormatter = d3.time.format("%b %d")
-    // d3 axis using that scale
     // for method chaining (like below) indent everything
     xAxis = d3.svg.axis()
         .orient("bottom")
@@ -40,63 +24,9 @@ var maxWidth = 680,
         .outerTickSize([0]) //7.95 was old value
         .tickFormat(function(d) { return dateFormatter(d); }),
 
-    brush = d3.svg.brush()
-        .x(xScale)
-        .extent([startingDate, startingDate])
-        .on("brush", brushed)
-        .on("brushstart", brushstart)
-        .on("brushend", brushend),
+    currentAmericaShown = 'south';
 
-    intervalID = null;
-
-function brushstart () {
-    intervalID = setInterval(sliderController.update, 50);
-}
-
-function brushend () {
-    clearInterval(intervalID);
-    sliderController.update();
-}
-
-southAmerica = d3.selectAll('.southAmericaMap');
-
-centralAmerica = d3.selectAll('.centralAmericaMap');
-
-/*var places = PLACES,
-    valuePixelsSouth = xScale(new Date(places[55].startDate));
-
-southAmerica.style('display', 'block') === true && */
-function brushed () {
-    var value = brush.extent()[0];
-
-    // registers where your mouse is on the x axis, makes a date out of that, and then passes this back in to the xScale so it knows where on the axis to move
-    console.log('brushed', d3.event);
-    if (d3.event.sourceEvent) {
-        value = xScale.invert(d3.mouse(this)[0]);
-    /*    if (d3.mouse(this)[0] > valuePixelsSouth) {
-            return;
-        } */
-        brush.extent([value, value]);
-    }
-
-    /*if (d3.mouse(this)[0] > valuePixelsSouth) {
-        return;
-    }*/
-    
-    handle.attr("transform", "translate(" + (xScale(value) - (handleSize / 2)) + ",0)");
-    handle.select('text').text(sliderDateFormatter(value));
-}
-
-
-// calls the function main when "DOMContentLoaded" is triggered
-document.addEventListener("DOMContentLoaded", main);
-
-// put user interaction code here
 function main (event) {
-    // this where you want to write execution code
-    console.log("I am loaded completely", event);
-    console.log("Let's see if d3 loaded", d3);
-
     var svg = d3.select("#timeline").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
@@ -112,6 +42,68 @@ function main (event) {
             .attr('dy', '.45em')
             .attr('transform', 'rotate(-40)');
 
+    initializeArrowHandlers();
+    initializeSlider(svg);
+}
+
+// calls the function main after the browser renders index.html
+document.addEventListener("DOMContentLoaded", main);
+
+function initializeSlider (svg) {
+    var handle = null,
+        handleSize = 24,
+        brush = d3.svg.brush()
+            .x(xScale)
+            .extent([startingDate, startingDate])
+            .on("brush", brushed)
+            .on("brushstart", brushstart)
+            .on("brushend", brushend),
+
+        intervalID = null,
+
+        // for switching between south and central maps
+        southAmericaEnd = 54,
+        centralAmericaStart = 55,
+        lastSouthAmericaDate = new Date(PLACES[southAmericaEnd].startDate),
+        firstCentralAmericaDate = new Date(PLACES[centralAmericaStart].startDate);
+
+    console.log("PLACES:", PLACES);
+    console.log("southAmericaEndPlace:", PLACES[southAmericaEnd]);
+    console.log("centralAmericaStartPlace:", PLACES[centralAmericaStart]);
+
+    function brushed () {
+        var value = brush.extent()[0];
+
+        // registers where your mouse is on the x axis, makes a date out of that, and then passes this back in to the xScale so it knows where on the axis to move
+        //console.log('brushed', d3.event);
+        if (d3.event.sourceEvent) {
+            value = xScale.invert(d3.mouse(this)[0]);
+
+            if (currentAmericaShown === 'south' && value > lastSouthAmericaDate) {
+                value = lastSouthAmericaDate;
+            }
+            else if (currentAmericaShown === 'central' && value < firstCentralAmericaDate) {
+                value = firstCentralAmericaDate;
+            }
+
+            brush.extent([value, value]);
+        }
+
+        // moves the slider triangle
+        handle.attr("transform", "translate(" + (xScale(value) - (handleSize / 2)) + ",0)");
+        handle.select('text').text(sliderDateFormatter(value));
+    }
+
+    function brushstart () {
+        intervalID = setInterval(sliderController.update, 100);
+    }
+
+    function brushend () {
+        clearInterval(intervalID);
+        sliderController.update();
+    }
+
+    // creates the moveable brush
     var slider = svg
         .append('g')
         .attr("transform", "translate(" + margin.left + "," + 0 + ")")
@@ -143,6 +135,42 @@ function main (event) {
         .attr("transform", "translate(" + (-9) + " ," + (11) + ")")
         .attr("class", "text");
 
-    sliderController.init();
+    sliderController.init(brush);
     slider.call(brush.event);
+}
+
+function initializeArrowHandlers () {
+    d3.selectAll('#southAmericaArrow polygon').on('click', function() {
+        // fade out South America map
+        d3.select('.southAmericaMap')
+            .classed('fadeIn', false)
+            .classed('fadeOut', true)
+            // after fade
+            .on('transitionend', function (d) {
+                currentAmericaShown = 'central';
+                // remove South America map from DOM
+                d3.select('.southAmericaMap').style('display', 'none');
+                // fade in Central America map
+                d3.select('.centralAmericaMap')
+                    .style('display', 'inline')
+                    .classed('fadeIn', true)
+                    .classed('fadeOut', false); });
+    });
+
+    d3.selectAll('#centralAmericaArrow polygon').on('click', function() {
+        // fade out Central America map
+        d3.select('.centralAmericaMap')
+            .classed('fadeIn', false)
+            .classed('fadeOut', true)
+            // after fade
+            .on('transitionend', function (d) {
+                currentAmericaShown = 'south';
+                // remove Central America map from DOM
+                d3.select('.centralAmericaMap').style('display', 'none');
+                // fade in Central America map
+                d3.select('.southAmericaMap')
+                    .style('display', 'inline')
+                    .classed('fadeIn', true)
+                    .classed('fadeOut', false); });
+    });
 }

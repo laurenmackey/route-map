@@ -140,7 +140,7 @@ var PLACES = [
         "endDate": "2015-12-13",
         "incomingLines": ["#line18"],
         // "outgoingLine": "#line19",
-    }, 
+    },
     {
         "name": "Valparaíso",
         "id": "#Chile_3",
@@ -164,7 +164,7 @@ var PLACES = [
         "endDate": "2015-12-22",
         "incomingLines": ["#line200"],
         // "outgoingLine": "#line19",
-    }, 
+    },
     {
         "name": "Puerto Octay/Lakes District Farm",
         "id": "#Chile_5",
@@ -188,7 +188,7 @@ var PLACES = [
         "endDate": "2016-01-21",
         "incomingLines": ["#line23"],
         // "outgoingLine": "#line24",
-    }, 
+    },
     {
         "name": "Dalcahue",
         "id": "#Chile_8",
@@ -196,7 +196,7 @@ var PLACES = [
         "endDate": "2016-01-24",
         "incomingLines": ["#line24"],
         // "outgoingLine": "#line25",
-    }, 
+    },
     {
         "name": "Castro",
         "id": "#Chile_9",
@@ -204,7 +204,7 @@ var PLACES = [
         "endDate": "2016-01-27",
         "incomingLines": ["#line25"],
         // "outgoingLine": "#line26",
-    },  
+    },
     {
         "name": "Chaitén & Parque Pumalín",
         "id": "#Chile_10",
@@ -228,7 +228,7 @@ var PLACES = [
         "endDate": "2016-02-02",
         "incomingLines": ["#line28"],
         // "outgoingLine": "#line29",
-    }, 
+    },
     {
         "name": "Coyhaique",
         "id": "#Chile_13",
@@ -236,7 +236,7 @@ var PLACES = [
         "endDate": "2016-02-06",
         "incomingLines": ["#line29"],
         // "outgoingLine": "#line30",
-    },  
+    },
     {
         "name": "Cerro Castillo",
         "id": "#Chile_14",
@@ -244,7 +244,7 @@ var PLACES = [
         "endDate": "2016-02-11",
         "incomingLines": ["#line30"],
         // "outgoingLine": "#line31",
-    }, 
+    },
     {
         "name": "Puerto Río Tranquilo",
         "id": "#Chile_15",
@@ -252,7 +252,7 @@ var PLACES = [
         "endDate": "2016-02-12",
         "incomingLines": ["#line31"],
         // "outgoingLine": "#line32",
-    },  
+    },
     // Argentina
     {
         "name": "El Chaltén",
@@ -261,7 +261,7 @@ var PLACES = [
         "endDate": "2016-02-16",
         "incomingLines": ["#line32"],
         // "outgoingLine": "#line33",
-    },  
+    },
     {
         "name": "El Calafate",
         "id": "#Argentina_2",
@@ -269,7 +269,7 @@ var PLACES = [
         "endDate": "2016-02-18",
         "incomingLines": ["#line33"],
         // "outgoingLine": "#line34",
-    },  
+    },
     // Chile
     {
         "name": "Puerto Natales & Torres del Paine",
@@ -278,7 +278,7 @@ var PLACES = [
         "endDate": "2016-02-29",
         "incomingLines": ["#line34"],
         // "outgoingLine": "#line35",
-    },  
+    },
     {
         "name": "Punta Arenas",
         "id": "#Chile_19",
@@ -295,7 +295,7 @@ var PLACES = [
         "endDate": "2016-03-04",
         "incomingLines": ["#line36"],
         // "outgoingLine": "#line37",
-    }, 
+    },
     {
         "name": "Buenos Aires",
         "id": "#Argentina_4",
@@ -303,7 +303,7 @@ var PLACES = [
         "endDate": "2016-03-15",
         "incomingLines": ["#line37"],
         // "outgoingLine": "#line38",
-    },  
+    },
     // Uruguay
     {
         "name": "Montevideo",
@@ -312,7 +312,7 @@ var PLACES = [
         "endDate": "2016-03-16",
         "incomingLines": ["#line39"],
         // "outgoingLine": "#line40",
-    }, 
+    },
     {
         "name": "Punta del Diablo",
         "id": "#Uruguay_2",
@@ -320,7 +320,7 @@ var PLACES = [
         "endDate": "2016-03-19",
         "incomingLines": ["#line40"],
         // "outgoingLine": "line41",
-    }, 
+    },
     {
         "name": "Colonia del Sacramento",
         "id": "#Uruguay_3",
@@ -328,7 +328,7 @@ var PLACES = [
         "endDate": "2016-03-21",
         "incomingLines": ["#line41"],
         // "outgoingLine": "#line38",
-    }, 
+    },
     // Argentina
     {
         "name": "Buenos Aires",
@@ -345,7 +345,7 @@ var PLACES = [
         "endDate": "2016-04-01",
         "incomingLines": ["#line42"],
         // "outgoingLine": "#line43",
-    }, 
+    },
     {
         "name": "Buenos Aires",
         "id": "#Argentina_4000",
@@ -353,7 +353,7 @@ var PLACES = [
         "endDate": "2016-04-15",
         "incomingLines": ["#line43"],
         // "outgoingLine": "#line44",
-    }, 
+    },
     {
         "name": "Mendoza",
         "id": "#Argentina_6",
@@ -361,7 +361,7 @@ var PLACES = [
         "endDate": "2016-04-19",
         "incomingLines": ["#line44"],
         // "outgoingLine": "#line45",
-    }, 
+    },
     {
         "name": "Salta",
         "id": "#Argentina_7",
@@ -378,7 +378,7 @@ var PLACES = [
         "endDate": "2016-04-24",
         "incomingLines": ["#line46"],
         // "outgoingLine": "#line47",
-    },  
+    },
     {
         "name": "Santa Cruz",
         "id": "#Bolivia_8",
@@ -386,7 +386,7 @@ var PLACES = [
         "endDate": "2016-04-28",
         "incomingLines": ["#line47"],
         // "outgoingLine": "#line48",
-    }, 
+    },
     // Colombia
     {
         "name": "Bogota",
@@ -395,7 +395,7 @@ var PLACES = [
         "endDate": "2016-05-02",
         "incomingLines": ["#line48"],
         // "outgoingLine": "#line49",
-    },  
+    },
     {
         "name": "Medellín",
         "id": "#Colombia_2",
@@ -403,7 +403,7 @@ var PLACES = [
         "endDate": "2016-06-02",
         "incomingLines": ["#line49"],
         // "outgoingLine": "#line50",
-    }, 
+    },
     {
         "name": "Jardín",
         "id": "#Colombia_3",
@@ -476,7 +476,7 @@ var PLACES = [
         "endDate": "2016-07-05",
         "incomingLines": ["#line57"],
         // "outgoingLine": "#line49",
-    }, 
+    },
     // Costa Rica
     {
         "name": "SanJose",
@@ -485,7 +485,7 @@ var PLACES = [
         "endDate": "2016-07-07",
         "incomingLines": ["#line58"],
         // "outgoingLine": "#line49",
-    }, 
+    },
     {
         "name": "Monteverde",
         "id": "#CostaRica_2",
@@ -501,7 +501,7 @@ var PLACES = [
         "endDate": "2016-07-13",
         "incomingLines": ["#line60"],
         // "outgoingLine": "#line49",
-    },   
+    },
     {
         "name": "SantaTeresa",
         "id": "#CostaRica_4",
@@ -572,7 +572,7 @@ var PLACES = [
         "name": "Utila",
         "id": "#Honduras_1",
         "startDate": "2016-08-07",
-        "endDate": "2016-08-013",
+        "endDate": "2016-08-13",
         "incomingLines": ["#line69"],
         // "outgoingLine": "#line49",
     }
