@@ -27,7 +27,7 @@ myTestData = {
 
 
 // SCRAPPED CODE FOR SLIDER
-   
+
 // generating the slider as either a rect (top) or a trianlge (bottom)
 
 var mySlider = svg

@@ -4,24 +4,21 @@ var sliderController = (function(d3) {
         places = null,
         lines = null,
         placeIndex = 0,
-        highlightedPlace = null;
+        highlightedPlace = null,
+        brush = null;
 
-    my.init = function () {
+    my.init = function (sliderBrush) {
+        console.log("brush", sliderBrush);
+        brush = sliderBrush;
         // hides all city dots and names
-        cities = d3.selectAll('svg #Peru_Cities, #Bolivia_Cities, #Chile_Cities, #Argentina_Cities, #Uruguay_Cities, #Colombia_Cities, #Panama_Cities, #CostaRica_Cities, #Nicaragua_Cities, #Honduras_Cities, #Colombia_Cities_Central')
+        cities = d3.selectAll('svg .cities')
             .selectAll('g')
             .style('visibility', 'hidden');
 
         // hides all route lines
-        lines = d3.selectAll('svg #Lines path, line, polyline')
+        lines = d3.selectAll('svg g#Lines').selectAll('path, line, polyline')
             .style('visibility', 'hidden');
 
-        // adds ticklines back in as they delete from code above
-        tickLines = d3.selectAll('svg g .tick line')
-            .style('visibility', 'visible');
-
-        // extrapolates all variables from the full places.js file and sets them equal to vars to be
-        // used in this js file
         places = PLACES;
         for (var i = 0; i < places.length; i++) {
             places[i].startDate = new Date(places[i].startDate);
@@ -39,12 +36,10 @@ var sliderController = (function(d3) {
 
     // toggleHighlight either highlights or removes a highlight from a place
     // Inputs: place object, and bool (true | false)
-    // ToDo: add additional code to add and delete additional info panel (transport icon and 
-    // info about place)
-
     function toggleHighlight (place, bool) {
         // argument checking
-        if (place === null || place.city === null || place.city.size(0) === 0 || typeof bool !== 'boolean') {
+        if (place === null || place.city === null || place.city.size(0) === 0 ||
+            typeof bool !== 'boolean') {
             return null;
         }
         var city = place.city,
@@ -53,13 +48,6 @@ var sliderController = (function(d3) {
 
         cityCircle.classed('highlighted', bool);
 
-        // COND ? first option (COND == true) : second option (COND == false)
-        // our actual statement is equivalent to:
-        // if (bool) {
-        //    cityText.style('visibility': 'visible');
-        // } else {
-        //    cityText.style('visibility': null);
-        // }
         // NOTE: setting a style to null removes it from the DOM
         cityText.style('visibility', bool ? 'visible': null);
     }
@@ -79,11 +67,11 @@ var sliderController = (function(d3) {
 
         place.city.style('visibility', 'hidden');
     }
-    
+
     my.update = function () {
         // get the date from the slider
         var date = brush.extent()[0];
-        console.log("The date is", date)
+        //console.log("sliderController:: update: the date is", date)
 
         // edge conditions
         if (placeIndex === -1) {
@@ -101,81 +89,67 @@ var sliderController = (function(d3) {
 
         function checkForward () {
             for (; placeIndex < places.length && date > places[placeIndex].startDate; placeIndex++) {
- 
+
                 //console.log('sliderController:: update: moving forward', places[placeIndex]);
- 
+
                 // unhighlight last place
                 toggleHighlight(highlightedPlace, false);
- 
+
                 // show city and lines
                 showPlace(places[placeIndex]);
- 
+
                 // highlight new place
                 highlightedPlace = places[placeIndex];
                 toggleHighlight(highlightedPlace, true);
             }
-        } 
+        }
 
 
         function checkBackward () {
             for (; placeIndex >= 0 && date < places[placeIndex].endDate; placeIndex--) {
- 
-                console.log('sliderController:: update: moving backward', places[placeIndex]);
- 
+
+                //console.log('sliderController:: update: moving backward', places[placeIndex]);
+
                 // unhighlight last place
                 toggleHighlight(highlightedPlace, false);
- 
+
                 // hide last city and lines
                 hidePlace(highlightedPlace);
- 
+
                 // highlight new place
                 highlightedPlace = places[placeIndex];
                 toggleHighlight(highlightedPlace, true);
 
                 if (placeIndex === 0) {
-                   hidePlace (places[0]);
+                   hidePlace(places[0]);
                    toggleHighlight(places[0], false);
                 }
             }
         }
 
+        // select country outlines
+        var bolivia = d3.select('svg g#Country_Outlines #Bolivia')
+                .selectAll('path'),
+            chile = d3.select('svg g#Country_Outlines #Chile')
+                .selectAll('path'),
+            argentina = d3.select('svg g#Country_Outlines #Argentina')
+                .selectAll('path'),
+            uruguay = d3.selectAll('svg g#Country_Outlines #Uruguay')
+                .selectAll('path'),
+            colombia = d3.selectAll('svg g#Country_Outlines #Colombia')
+                .selectAll('path'),
+            costaRica = d3.selectAll('svg g#Country_Outlines #Costa_Rica')
+                .selectAll('path'),
+            nicaragua = d3.selectAll('svg g#Country_Outlines #Nicaragua')
+                .selectAll('path'),
+            honduras = d3.selectAll('svg g#Country_Outlines #Honduras')
+                .selectAll('path'),
+            centralGreen = d3.selectAll('svg #Central_America_green'),
+            centralGray = d3.selectAll('svg #Central_America_gray'),
+            southArrow = d3.selectAll('svg #southAmericaArrow'),
+            centralArrow = d3.selectAll('svg #centralAmericaArrow');
+
         function highlightCountryForward () {
-            bolivia = d3.selectAll('svg #Bolivia')
-                .selectAll('g')
-                .selectAll('path');
-
-            chile = d3.selectAll('svg #Chile')
-                .selectAll('g')
-                .selectAll('path');
-
-            argentina = d3.selectAll('svg #Argentina')
-                .selectAll('g')
-                .selectAll('path');
-
-            uruguay = d3.selectAll('svg #Uruguay')
-                .selectAll('g')
-                .selectAll('path');
-
-            colombia = d3.selectAll('svg #Colombia')
-                .selectAll('g')
-                .selectAll('path');
-
-            costaRica = d3.selectAll('svg #Costa_Rica')
-                .selectAll('path')
-
-            nicaragua = d3.selectAll('svg #Nicaragua')
-                .selectAll('path')
-
-            honduras = d3.selectAll('svg #Honduras')
-                .selectAll('g')
-                .selectAll('path')
-
-            centralGreen = d3.selectAll('svg #Central_America_green');
-
-            centralGray = d3.selectAll('svg #Central_America_gray');
-
-            arrow = d3.selectAll('svg #southAmericaArrow');
-
             if (placeIndex >= 10) {
                 bolivia.style('fill', '#CEF275');
             }
@@ -196,10 +170,10 @@ var sliderController = (function(d3) {
                 colombia.style('fill', '#CEF275');
             }
 
-            if (placeIndex >= 55) {
+            if (placeIndex >= 54) {
                 centralGreen.style('display', 'inline');
                 centralGray.style('display', 'none');
-                arrow.style('display', 'inline').classed('bounce', true);
+                southArrow.style('display', 'inline').classed('bounce', true);
             }
 
             if (placeIndex >= 58) {
@@ -216,49 +190,37 @@ var sliderController = (function(d3) {
         }
 
         function highlightCountryBackward () {
-            bolivia = d3.selectAll('svg #Bolivia')
-                .selectAll('g')
-                .selectAll('path')
+            bolivia
                 .style('fill', '#E0E0E0');
 
-            chile = d3.selectAll('svg #Chile')
-                .selectAll('g')
-                .selectAll('path')
+            chile
                 .style('fill', '#E0E0E0');
 
-            argentina = d3.selectAll('svg #Argentina_Map_path')
+            argentina
                 .style('fill', '#E0E0E0');
 
-            uruguay = d3.selectAll('svg #Uruguay')
-                .selectAll('g')
-                .selectAll('path')
+            uruguay
                 .style('fill', '#E0E0E0');
 
-            colombia = d3.selectAll('svg #Colombia')
-                .selectAll('g')
-                .selectAll('path')
+            colombia
                 .style('fill', '#E0E0E0');
 
-            costaRica = d3.selectAll('svg #Costa_Rica')
-                .selectAll('path')
+            costaRica
                 .style('fill', '#E0E0E0');
 
-            nicaragua = d3.selectAll('svg #Nicaragua')
-                .selectAll('path')
+            nicaragua
                 .style('fill', '#E0E0E0');
 
-            honduras = d3.selectAll('svg #Honduras')
-                .selectAll('g')
-                .selectAll('path')
+            honduras
                 .style('fill', '#E0E0E0');
 
-            centralGreen = d3.selectAll('svg #Central_America_green')
+            centralGreen
                 .style('display', 'none');
 
-            centralGray = d3.selectAll('svg #Central_America_gray')
+            centralGray
                 .style('display', 'inline');
 
-            arrow = d3.selectAll('svg #southAmericaArrow')
+            southArrow
                 .style('display', 'none');
 
             if (placeIndex >= 8) {
@@ -284,7 +246,7 @@ var sliderController = (function(d3) {
             if (placeIndex >= 53) {
                 centralGreen.style('display', 'inline');
                 centralGray.style('display', 'none');
-                arrow.style('display', 'inline').classed('bounce', true);
+                centralArrow.style('display', 'inline').classed('bounce', true);
             }
 
             if (placeIndex >= 56) {
@@ -299,8 +261,8 @@ var sliderController = (function(d3) {
                 honduras.style('fill', '#CEF275');
             }
         }
-    
-        console.log('sliderController:: update:', date, 'placeIndex', placeIndex, places[placeIndex]);
+
+        //console.log('sliderController:: update:', date, 'placeIndex', placeIndex, places[placeIndex]);
 
         // to start it off
         if (highlightedPlace === null) {
