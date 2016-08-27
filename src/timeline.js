@@ -63,13 +63,13 @@ function initializeSlider (svg) {
 
         // for switching between south and central maps
         southAmericaEnd = 54,
-        centralAmericaStart = 55,
-        lastSouthAmericaDate = new Date(PLACES[southAmericaEnd].startDate),
-        firstCentralAmericaDate = new Date(PLACES[centralAmericaStart].startDate);
+        centralAmericaStart = 56,
+        lastSouthAmericaDate = new Date(PLACES[centralAmericaStart].startDate),
+        firstCentralAmericaDate = new Date(PLACES[southAmericaEnd].startDate);
 
     console.log("PLACES:", PLACES);
-    console.log("southAmericaEndPlace:", PLACES[southAmericaEnd]);
-    console.log("centralAmericaStartPlace:", PLACES[centralAmericaStart]);
+    console.log("southAmericaEndPlace:", PLACES[centralAmericaStart]);
+    console.log("centralAmericaStartPlace:", PLACES[southAmericaEnd]);
 
     function brushed () {
         var value = brush.extent()[0];

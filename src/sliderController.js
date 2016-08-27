@@ -72,6 +72,7 @@ var sliderController = (function(d3) {
         // get the date from the slider
         var date = brush.extent()[0];
         //console.log("sliderController:: update: the date is", date)
+        console.log("Place Index: ", placeIndex);
 
         // edge conditions
         if (placeIndex === -1) {
@@ -176,15 +177,15 @@ var sliderController = (function(d3) {
                 southArrow.style('display', 'inline').classed('bounce', true);
             }
 
-            if (placeIndex >= 58) {
+            if (placeIndex >= 59) {
                 costaRica.style('fill', '#CEF275');
             }
 
-            if (placeIndex >= 64) {
+            if (placeIndex >= 65) {
                 nicaragua.style('fill', '#CEF275');
             }
 
-            if (placeIndex >= 69) {
+            if (placeIndex >= 70) {
                 honduras.style('fill', '#CEF275');
             }
         }
@@ -246,18 +247,21 @@ var sliderController = (function(d3) {
             if (placeIndex >= 53) {
                 centralGreen.style('display', 'inline');
                 centralGray.style('display', 'none');
+            }
+
+            if (placeIndex === 54) {
                 centralArrow.style('display', 'inline').classed('bounce', true);
             }
 
-            if (placeIndex >= 56) {
+            if (placeIndex >= 57) {
                 costaRica.style('fill', '#CEF275');
             }
 
-            if (placeIndex >= 62) {
+            if (placeIndex >= 63) {
                 nicaragua.style('fill', '#CEF275');
             }
 
-            if (placeIndex >= 67) {
+            if (placeIndex >= 68) {
                 honduras.style('fill', '#CEF275');
             }
         }
