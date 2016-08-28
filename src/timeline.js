@@ -64,12 +64,12 @@ function initializeSlider (svg) {
         // for switching between south and central maps
         southAmericaEnd = 54,
         centralAmericaStart = 56,
-        lastSouthAmericaDate = new Date(PLACES[centralAmericaStart].startDate),
-        firstCentralAmericaDate = new Date(PLACES[southAmericaEnd].startDate);
+        lastSouthAmericaDate = new Date(PLACES[southAmericaEnd].startDate),
+        firstCentralAmericaDate = new Date(PLACES[centralAmericaStart].startDate);
 
     console.log("PLACES:", PLACES);
-    console.log("southAmericaEndPlace:", PLACES[centralAmericaStart]);
-    console.log("centralAmericaStartPlace:", PLACES[southAmericaEnd]);
+    console.log("southAmericaEndPlace:", PLACES[southAmericaEnd], lastSouthAmericaDate);
+    console.log("centralAmericaStartPlace:", PLACES[centralAmericaStart], firstCentralAmericaDate);
 
     function brushed () {
         var value = brush.extent()[0];
@@ -79,11 +79,11 @@ function initializeSlider (svg) {
         if (d3.event.sourceEvent) {
             value = xScale.invert(d3.mouse(this)[0]);
 
-            if (currentAmericaShown === 'south' && value > lastSouthAmericaDate) {
-                value = lastSouthAmericaDate;
-            }
-            else if (currentAmericaShown === 'central' && value < firstCentralAmericaDate) {
+            if (currentAmericaShown === 'south' && value > firstCentralAmericaDate) {
                 value = firstCentralAmericaDate;
+            }
+            else if (currentAmericaShown === 'central' && value < lastSouthAmericaDate) {
+                value = lastSouthAmericaDate;
             }
 
             brush.extent([value, value]);
@@ -143,34 +143,45 @@ function initializeArrowHandlers () {
     d3.selectAll('#southAmericaArrow polygon').on('click', function() {
         // fade out South America map
         d3.select('.southAmericaMap')
-            .classed('fadeIn', false)
-            .classed('fadeOut', true)
-            // after fade
-            .on('transitionend', function (d) {
+            .transition()
+            .duration(800)
+            .style('opacity', 0)
+            .each('end', function (d, i) {
                 currentAmericaShown = 'central';
+
                 // remove South America map from DOM
-                d3.select('.southAmericaMap').style('display', 'none');
+                d3.select(this).style('display', 'none');
+
                 // fade in Central America map
                 d3.select('.centralAmericaMap')
                     .style('display', 'inline')
-                    .classed('fadeIn', true)
-                    .classed('fadeOut', false); });
+                    .style('opacity', 0)
+                    .transition()
+                    .duration(800)
+                    .style('opacity', 1);
+            });
+
     });
 
     d3.selectAll('#centralAmericaArrow polygon').on('click', function() {
         // fade out Central America map
         d3.select('.centralAmericaMap')
-            .classed('fadeIn', false)
-            .classed('fadeOut', true)
-            // after fade
-            .on('transitionend', function (d) {
+            .transition()
+            .duration(800)
+            .style('opacity', 0)
+            .each('end', function (d, i) {
                 currentAmericaShown = 'south';
+
                 // remove Central America map from DOM
-                d3.select('.centralAmericaMap').style('display', 'none');
-                // fade in Central America map
+                d3.select(this).style('display', 'none');
+
+                // fade in South America map
                 d3.select('.southAmericaMap')
                     .style('display', 'inline')
-                    .classed('fadeIn', true)
-                    .classed('fadeOut', false); });
+                    .style('opacity', 0)
+                    .transition()
+                    .duration(800)
+                    .style('opacity', 1);
+            });
     });
 }

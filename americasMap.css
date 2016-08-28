@@ -61,16 +61,6 @@ Html, body, div, h1 {
     margin-top: -7%;
 }
 
-.fadeOut {
-    opacity: 0;
-    transition: opacity .8s linear;
-}
-
-.fadeIn {
-    opacity: 1;
-    display: inline;
-}
-
 /*Styling for the timeline*/
 
 #timeline {
