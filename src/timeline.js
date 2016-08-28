@@ -1,5 +1,5 @@
 // size parameters for SVG creation in main()
-var maxWidth = 680,
+var maxWidth = 640,
     maxHeight = 80,
     margin = {top: 32, right: 30, bottom: 17, left: 30},
     width = maxWidth - margin.left - margin.right,
