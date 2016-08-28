@@ -4,6 +4,11 @@ Html, body, div, h1 {
     Margin: 0;
 }
 
+#wrapper {
+    width: 640px;
+    margin: auto;
+}
+
 #Country_Names {
     font-weight: lighter;
 }
@@ -47,9 +52,7 @@ Html, body, div, h1 {
 }
 
 .southAmericaMap, .centralAmericaMap {
-    margin: auto;
     margin-top: 2px;
-    width: 640px;
 }
 
 .centralAmericaMap {
@@ -57,18 +60,7 @@ Html, body, div, h1 {
 }
 
 #centralAmericaSvg {
-    margin-left: 27%;
     margin-top: -7%;
-}
-
-.fadeOut {
-    opacity: 0;
-    transition: opacity .8s linear;
-}
-
-.fadeIn {
-    opacity: 1;
-    display: inline;
 }
 
 /*Styling for the timeline*/

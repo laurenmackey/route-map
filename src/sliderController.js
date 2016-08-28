@@ -151,6 +151,9 @@ var sliderController = (function(d3) {
             centralArrow = d3.selectAll('svg #centralAmericaArrow');
 
         function highlightCountryForward () {
+            centralArrow
+                .style('display', 'none');
+
             if (placeIndex >= 10) {
                 bolivia.style('fill', '#CEF275');
             }
