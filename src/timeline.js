@@ -5,7 +5,7 @@ var maxWidth = 640,
     width = maxWidth - margin.left - margin.right,
     height = maxHeight - margin.top - margin.bottom,
     startingDate = new Date("2015-08-30"),
-    endingDate = new Date("2016-09-02"),
+    endingDate = new Date("2016-09-08"),
     // we create this here so we can use it in main and brushed
 
     xScale = d3.time.scale()
@@ -78,6 +78,11 @@ function initializeSlider (svg) {
         //console.log('brushed', d3.event);
         if (d3.event.sourceEvent) {
             value = xScale.invert(d3.mouse(this)[0]);
+
+            d3.select('#moveMe g')
+                .transition()
+                .duration(800)
+                .style('display', 'none');
 
             if (currentAmericaShown === 'south' && value > firstCentralAmericaDate) {
                 value = firstCentralAmericaDate;

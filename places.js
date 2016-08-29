@@ -458,7 +458,7 @@ var PLACES = [
         "id": "#Panama_1",
         "startDate": "2016-06-18",
         "endDate": "2016-06-23",
-        "incomingLines": ["#line88888"],
+        "incomingLines": ["#line56, #line55"],
         // "outgoingLine": "#line49",
     },
     {
@@ -466,7 +466,7 @@ var PLACES = [
         "id": "#Panama_2",
         "startDate": "2016-06-23",
         "endDate": "2016-06-27",
-        "incomingLines": ["#line56"],
+        "incomingLines": ["#line57"],
         // "outgoingLine": "#line49",
     },
     {
@@ -474,7 +474,7 @@ var PLACES = [
         "id": "#Panama_3",
         "startDate": "2016-06-27",
         "endDate": "2016-07-05",
-        "incomingLines": ["#line57"],
+        "incomingLines": ["#line58"],
         // "outgoingLine": "#line49",
     },
     // Costa Rica
@@ -483,7 +483,7 @@ var PLACES = [
         "id": "#CostaRica_1",
         "startDate": "2016-07-05",
         "endDate": "2016-07-07",
-        "incomingLines": ["#line58"],
+        "incomingLines": ["#line59"],
         // "outgoingLine": "#line49",
     },
     {
@@ -491,7 +491,7 @@ var PLACES = [
         "id": "#CostaRica_2",
         "startDate": "2016-07-07",
         "endDate": "2016-07-10",
-        "incomingLines": ["#line59"],
+        "incomingLines": ["#line60"],
         // "outgoingLine": "#line49",
     },
     {
@@ -499,7 +499,7 @@ var PLACES = [
         "id": "#CostaRica_3",
         "startDate": "2016-07-10",
         "endDate": "2016-07-13",
-        "incomingLines": ["#line60"],
+        "incomingLines": ["#line61"],
         // "outgoingLine": "#line49",
     },
     {
@@ -507,7 +507,7 @@ var PLACES = [
         "id": "#CostaRica_4",
         "startDate": "2016-07-13",
         "endDate": "2016-07-16",
-        "incomingLines": ["#line61"],
+        "incomingLines": ["#line62"],
         // "outgoingLine": "#line49",
     },
     {
@@ -515,7 +515,7 @@ var PLACES = [
         "id": "#CostaRica_5",
         "startDate": "2016-07-16",
         "endDate": "2016-07-19",
-        "incomingLines": ["#line62"],
+        "incomingLines": ["#line63"],
         // "outgoingLine": "#line49",
     },
     {
@@ -523,7 +523,7 @@ var PLACES = [
         "id": "#CostaRica_6",
         "startDate": "2016-07-19",
         "endDate": "2016-07-20",
-        "incomingLines": ["#line63"],
+        "incomingLines": ["#line64"],
         // "outgoingLine": "#line49",
     },
     // Nicaragua
@@ -532,7 +532,7 @@ var PLACES = [
         "id": "#Nicaragua_1",
         "startDate": "2016-07-20",
         "endDate": "2016-07-25",
-        "incomingLines": ["#line64"],
+        "incomingLines": ["#line65"],
         // "outgoingLine": "#line49",
     },
     {
@@ -540,7 +540,7 @@ var PLACES = [
         "id": "#Nicaragua_2",
         "startDate": "2016-07-25",
         "endDate": "2016-07-29",
-        "incomingLines": ["#line65"],
+        "incomingLines": ["#line66"],
         // "outgoingLine": "#line49",
     },
     {
@@ -548,7 +548,7 @@ var PLACES = [
         "id": "#Nicaragua_3",
         "startDate": "2016-07-29",
         "endDate": "2016-08-01",
-        "incomingLines": ["#line66"],
+        "incomingLines": ["#line67"],
         // "outgoingLine": "#line49",
     },
     {
@@ -556,7 +556,7 @@ var PLACES = [
         "id": "#Nicaragua_4",
         "startDate": "2016-08-01",
         "endDate": "2016-08-04",
-        "incomingLines": ["#line67"],
+        "incomingLines": ["#line68"],
         // "outgoingLine": "#line49",
     },
     {
@@ -564,7 +564,7 @@ var PLACES = [
         "id": "#Nicaragua_5",
         "startDate": "2016-08-04",
         "endDate": "2016-08-07",
-        "incomingLines": ["#line68"],
+        "incomingLines": ["#line69"],
         // "outgoingLine": "#line49",
     },
     // Honduras
@@ -573,7 +573,48 @@ var PLACES = [
         "id": "#Honduras_1",
         "startDate": "2016-08-07",
         "endDate": "2016-08-13",
-        "incomingLines": ["#line69"],
+        "incomingLines": ["#line70"],
+        // "outgoingLine": "#line49",
+    },
+    // Guatemala
+    {
+        "name": "Flores",
+        "id": "#Guatemala_1",
+        "startDate": "2016-08-13",
+        "endDate": "2016-08-16",
+        "incomingLines": ["#line71"],
+        // "outgoingLine": "#line49",
+    },
+    {
+        "name": "SemucChampey",
+        "id": "#Guatemala_2",
+        "startDate": "2016-08-16",
+        "endDate": "2016-08-19",
+        "incomingLines": ["#line72"],
+        // "outgoingLine": "#line49",
+    },
+    {
+        "name": "Antigua",
+        "id": "#Guatemala_3",
+        "startDate": "2016-08-19",
+        "endDate": "2016-08-30",
+        "incomingLines": ["#line73"],
+        // "outgoingLine": "#line49",
+    },
+    {
+        "name": "SanMarcos",
+        "id": "#Guatemala_4",
+        "startDate": "2016-08-30",
+        "endDate": "2016-09-06",
+        "incomingLines": ["#line74"],
+        // "outgoingLine": "#line49",
+    },
+    {
+        "name": "GuatemalaCity",
+        "id": "#Guatemala_5",
+        "startDate": "2016-09-06",
+        "endDate": "2016-09-07",
+        "incomingLines": ["#line75"],
         // "outgoingLine": "#line49",
     }
 ]

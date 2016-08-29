@@ -145,6 +145,8 @@ var sliderController = (function(d3) {
                 .selectAll('path'),
             honduras = d3.selectAll('svg g#Country_Outlines #Honduras')
                 .selectAll('path'),
+            guatemala = d3.selectAll('svg g#Country_Outlines #Guatemala')
+                .selectAll('path'),
             centralGreen = d3.selectAll('svg #Central_America_green'),
             centralGray = d3.selectAll('svg #Central_America_gray'),
             southArrow = d3.selectAll('svg #southAmericaArrow'),
@@ -191,6 +193,10 @@ var sliderController = (function(d3) {
             if (placeIndex >= 70) {
                 honduras.style('fill', '#CEF275');
             }
+
+            if (placeIndex >= 71) {
+                guatemala.style('fill', '#CEF275');
+            }
         }
 
         function highlightCountryBackward () {
@@ -216,6 +222,9 @@ var sliderController = (function(d3) {
                 .style('fill', '#E0E0E0');
 
             honduras
+                .style('fill', '#E0E0E0');
+
+            guatemala
                 .style('fill', '#E0E0E0');
 
             centralGreen
@@ -266,6 +275,10 @@ var sliderController = (function(d3) {
 
             if (placeIndex >= 68) {
                 honduras.style('fill', '#CEF275');
+            }
+
+            if (placeIndex >= 69) {
+                guatemala.style('fill', '#CEF275');
             }
         }
 
